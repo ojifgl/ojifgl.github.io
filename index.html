@@ -26,7 +26,35 @@
 </audio>
    <div style="border-top: 1px solid #ccc; margin: 20px 0;"></div>
 
-   <input type="datetime-local" id="meeting-time">
+<style>
+body {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 0;
+background-color: #f0f0f0;
+}
+#time {
+font-size: 48px;
+font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div id="time"></div>
+
 <script>
-document.getElementById('meeting-time').value = '2025-08-15T14:30';
+function updateTime() {
+const now = new Date();
+const hours = String(now.getHours()).padStart(2, '0');
+const minutes = String(now.getMinutes()).padStart(2, '0');
+const seconds = String(now.getSeconds()).padStart(2, '0');
+document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+}
+
+setInterval(updateTime, 1000); // 每秒更新一次
+updateTime(); // 页面加载时立即显示时间
 </script>
+</body>
+</html>
